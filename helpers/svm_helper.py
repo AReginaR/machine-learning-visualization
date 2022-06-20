@@ -4,7 +4,7 @@ from sklearn import datasets
 from sklearn import metrics
 
 
-def generate_data(size, shape, noise):
+def generate_data_svm(size, shape, noise):
     if shape == 'moon':
         return datasets.make_moons(n_samples=size, noise=noise, random_state=0)
 

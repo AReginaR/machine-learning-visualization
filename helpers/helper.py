@@ -190,3 +190,32 @@ def viz(dataset, labels, centroids):
     )
 
     return [trace1, trace2, trace3]
+
+
+def generate_data_pca(size, shape):
+    if shape == 'blobs':
+        return datasets.make_blobs(n_samples=size, n_features=3)
+
+    elif shape == 'linear':
+        return datasets.make_classification(n_samples=size, n_features=3, n_redundant=0, n_informative=2,
+                                            random_state=2,
+                                            n_clusters_per_class=1)
+
+    elif shape == 'iris':
+        iris = datasets.load_iris()
+        X = iris.data
+        y = iris.target
+        #    X_reduced = PCA(n_components=3).fit_transform(iris.data)
+        return X, y
+
+    elif shape == 'elips':
+        x = np.arange(1, 51)
+        y = 3 * x + np.random.randn(50) * 3
+        z = 2 * x + np.random.randn(50) * 2
+        X = []
+        for i in range(20):
+            X.append([x[i], y[i], z[i]])
+        X = np.array(X)
+        y = np.zeros(50)
+        return X, y
+
